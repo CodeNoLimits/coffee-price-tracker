@@ -67,7 +67,11 @@ export async function GET() {
         description: item.description || 'Premium specialty coffee with unique flavor profile',
         origin: item.origin || ['Ethiopia', 'Colombia', 'Brazil', 'Guatemala', 'Kenya'][index % 5],
         roastLevel: ['Light', 'Medium', 'Medium-Dark', 'Dark'][index % 4],
-        flavorNotes: item.ingredients || ['Chocolate', 'Nutty', 'Fruity', 'Caramel', 'Citrus'].slice(0, 2 + (index % 2)),
+        flavorNotes: Array.isArray(item.ingredients) 
+          ? item.ingredients 
+          : (typeof item.ingredients === 'string' 
+            ? [item.ingredients] 
+            : ['Chocolate', 'Nutty', 'Fruity', 'Caramel', 'Citrus'].slice(0, 2 + (index % 2))),
         link: item.url || `https://example.com/coffee/${index}`,
         imageUrl: item.image || `https://images.unsplash.com/photo-${1500000000000 + index * 1000000}?w=400&h=400&fit=crop`,
         rating: 3.5 + Math.random() * 1.5,

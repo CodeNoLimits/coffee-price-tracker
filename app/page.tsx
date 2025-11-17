@@ -218,6 +218,7 @@ export default function Home() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
+              aria-label="Sort products by"
               className="px-6 py-4 bg-white/80 backdrop-blur-sm border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all shadow-sm hover:shadow-md font-medium"
             >
               <option value="score">Best Score</option>
@@ -380,11 +381,11 @@ export default function Home() {
                       )}
 
                       {/* Flavor Notes */}
-                      {product.flavorNotes && product.flavorNotes.length > 0 && (
+                      {Array.isArray(product.flavorNotes) && product.flavorNotes.length > 0 && (
                         <div className="flex flex-wrap gap-2 mb-5">
-                          {product.flavorNotes.slice(0, 3).map((note) => (
+                          {product.flavorNotes.slice(0, 3).map((note, noteIdx) => (
                             <span
-                              key={note}
+                              key={noteIdx}
                               className="text-xs bg-gradient-to-r from-amber-100 to-orange-100 text-amber-900 px-3 py-1.5 rounded-full font-medium border border-amber-200/50"
                             >
                               {note}
