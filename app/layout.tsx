@@ -1,27 +1,29 @@
 import type { Metadata } from 'next'
-import { Inter, Playfair_Display } from 'next/font/google'
+import { Plus_Jakarta_Sans, Playfair_Display } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ 
+const plusJakarta = Plus_Jakarta_Sans({ 
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-display',
   display: 'swap',
+  weight: ['400', '500', '700', '800'],
 })
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
-  variable: '--font-playfair',
+  variable: '--font-serif',
   display: 'swap',
+  weight: ['900'],
 })
 
 export const metadata: Metadata = {
-  title: 'Coffee Price Tracker | Find the Best Coffee Deals',
-  description: 'AI-powered coffee price comparison from 50+ premium roasters. Find the best quality coffee at the best prices.',
+  title: 'CoffeeTrack - Premium Coffee Price Tracker',
+  description: 'Find premium coffee at the best prices. AI-powered platform to track prices and discover the best deals on specialty coffee beans.',
   keywords: 'coffee, price tracker, coffee deals, specialty coffee, coffee roasters',
-  authors: [{ name: 'Coffee Price Tracker' }],
+  authors: [{ name: 'CoffeeTrack' }],
   openGraph: {
-    title: 'Coffee Price Tracker | Find the Best Coffee Deals',
-    description: 'AI-powered coffee price comparison from 50+ premium roasters.',
+    title: 'CoffeeTrack - Premium Coffee Price Tracker',
+    description: 'Find premium coffee at the best prices.',
     type: 'website',
   },
 }
@@ -32,8 +34,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={`${plusJakarta.variable} ${playfair.variable}`}>
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+      </head>
+      <body className="font-display antialiased">{children}</body>
     </html>
   )
 }

@@ -3,107 +3,261 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 255, 255, 255;
-  --background-end-rgb: 255, 255, 255;
+  --primary: #FF6F00;
+  --background-light: #FFFFFF;
+  --background-dark: #1a120b;
+  --rich-brown: #3E2723;
+  --cream: #FFF8E1;
+  --gold-accent: #FFB300;
+  --subtle-gray: #f5f2f0;
+  --text-light: #3E2723;
+  --text-dark: #FFF8E1;
+  --text-muted-light: #6d5b59;
+  --text-muted-dark: #a19082;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 10, 10, 10;
-    --background-end-rgb: 10, 10, 10;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-  font-feature-settings: "rlig" 1, "calt" 1;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--background-light);
+  color: var(--text-light);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
-/* Custom Animations */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -1000px 0;
-  }
-  100% {
-    background-position: 1000px 0;
-  }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-shimmer {
-  animation: shimmer 2s infinite;
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(255, 255, 255, 0.3) 50%,
-    transparent 100%
-  );
-  background-size: 1000px 100%;
-}
-
-/* Smooth Scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom Scrollbar */
+.font-display {
+  font-family: "Playfair Display", serif;
+}
+
+.dark body {
+  background: var(--background-dark);
+  color: var(--text-dark);
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05);
+  background: var(--subtle-gray);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #f59e0b, #ea580c);
-  border-radius: 5px;
+  background: var(--gold-accent);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #d97706, #c2410c);
+  background: var(--primary);
 }
 
-/* Glassmorphism Effect */
-.glass {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+/* Selection */
+::selection {
+  background: rgba(255, 179, 0, 0.3);
+  color: var(--rich-brown);
 }
 
-/* Gradient Text */
-.gradient-text {
-  background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Card Styles */
+.product-card {
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(62, 39, 35, 0.08);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  box-shadow: 0 8px 20px rgba(62, 39, 35, 0.12);
+}
+
+.dark .product-card {
+  background: rgba(62, 39, 35, 0.3);
+}
+
+/* Filter Chip */
+.filter-chip {
+  padding: 0.375rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  background: var(--subtle-gray);
+  color: var(--text-muted-light);
+}
+
+.dark .filter-chip {
+  background: rgba(62, 39, 35, 0.5);
+  color: var(--text-muted-dark);
+}
+
+.filter-chip.active {
+  background: rgba(255, 111, 0, 0.2);
+  color: var(--primary);
+}
+
+/* AI Score Badge */
+.ai-score-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 179, 0, 0.2);
+  color: var(--gold-accent);
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+}
+
+.dark .ai-score-badge {
+  background: rgba(255, 179, 0, 0.3);
+  color: #fbbf24;
+}
+
+/* Input Styles */
+.search-input {
+  background: var(--subtle-gray);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.dark .search-input {
+  background: rgba(62, 39, 35, 0.5);
+}
+
+.search-input:focus {
+  outline: none;
+  ring: 2px;
+  ring-color: rgba(255, 111, 0, 0.5);
+}
+
+/* Sidebar */
+.sidebar {
+  background: white;
+  border-right: 1px solid rgba(245, 242, 240, 0.6);
+}
+
+.dark .sidebar {
+  background: var(--background-dark);
+  border-right-color: rgba(62, 39, 35, 0.5);
+}
+
+/* Price Range Slider */
+.price-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: var(--subtle-gray);
+  border-radius: 9999px;
+  outline: none;
+}
+
+.dark .price-slider {
+  background: rgba(62, 39, 35, 0.5);
+}
+
+.price-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--rich-brown);
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid white;
+}
+
+.dark .price-slider::-webkit-slider-thumb {
+  background: var(--cream);
+  border-color: var(--background-dark);
+}
+
+.price-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--rich-brown);
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid white;
+}
+
+.dark .price-slider::-moz-range-thumb {
+  background: var(--cream);
+  border-color: var(--background-dark);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
+/* Price Range Slider Track */
+.price-track {
+  position: relative;
+}
+
+.price-track-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  border-radius: 9999px;
+  background: var(--primary);
+}
+
+.price-track-handle {
+  position: absolute;
+  top: -8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.375rem;
+  cursor: pointer;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: -100%;
+    top: 69px;
+    z-index: 40;
+    transition: left 0.3s ease;
+    height: calc(100vh - 69px);
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
 }

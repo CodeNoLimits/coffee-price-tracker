@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coffee API Test</title>
+</head>
+<body>
+    <h1>Coffee API Fetch Test</h1>
+    <div id="status">Testing...</div>
+    <pre id="result"></pre>
+
+    <script>
+        async function testFetch() {
+            const statusEl = document.getElementById('status');
+            const resultEl = document.getElementById('result');
+
+            try {
+                statusEl.textContent = 'Fetching from /api/coffee...';
+                console.log('Starting fetch...');
+
+                const response = await fetch('/api/coffee');
+                console.log('Response received:', response.status);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                console.log('Data received:', data);
+
+                statusEl.textContent = `✓ SUCCESS: Got ${data.count} products`;
+                statusEl.style.color = 'green';
+                resultEl.textContent = JSON.stringify(data, null, 2);
+
+            } catch (error) {
+                statusEl.textContent = `✗ ERROR: ${error.message}`;
+                statusEl.style.color = 'red';
+                resultEl.textContent = error.stack;
+                console.error('Fetch error:', error);
+            }
+        }
+
+        // Run test immediately
+        testFetch();
+
+        // Also test after delay (simulating useEffect)
+        setTimeout(() => {
+            console.log('Running delayed test...');
+            testFetch();
+        }, 1000);
+    </script>
+</body>
+</html>
