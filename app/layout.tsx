@@ -37,6 +37,7 @@ export default function RootLayout({
     <html lang="en" className={`${plusJakarta.variable} ${playfair.variable}`}>
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet" />
       </head>
       <body className="font-display antialiased">{children}</body>
     </html>
