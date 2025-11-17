@@ -32,11 +32,11 @@ export default function Home() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'info' } | null>(null);
 
-  // Filter states
-  const [priceRange, setPriceRange] = useState<[number, number]>([15, 75]);
-  const [roastLevels, setRoastLevels] = useState<Set<string>>(new Set(['Light', 'Medium']));
-  const [origins, setOrigins] = useState<Set<string>>(new Set(['Ethiopia']));
-  const [flavorProfiles, setFlavorProfiles] = useState<Set<string>>(new Set(['Fruity', 'Floral']));
+  // Filter states - START WITH NO FILTERS (show all products)
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 100]);
+  const [roastLevels, setRoastLevels] = useState<Set<string>>(new Set());
+  const [origins, setOrigins] = useState<Set<string>>(new Set());
+  const [flavorProfiles, setFlavorProfiles] = useState<Set<string>>(new Set());
 
   const fetchCoffee = async () => {
     setLoading(true);
