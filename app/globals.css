@@ -246,6 +246,19 @@ html {
   cursor: pointer;
 }
 
+.price-handle-left {
+  left: calc(var(--handle-left, 0%) - 8px);
+}
+
+.price-handle-right {
+  right: calc(var(--handle-right, 0%) - 8px);
+}
+
+.price-fill {
+  width: var(--fill-width, 0%);
+  left: var(--fill-left, 0%);
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .sidebar {
