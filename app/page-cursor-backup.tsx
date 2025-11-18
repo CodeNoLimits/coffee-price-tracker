@@ -170,9 +170,11 @@ export default function Home() {
       // Search filter
       if (searchTerm) {
         const searchLower = searchTerm.toLowerCase();
-        if (!p.name.toLowerCase().includes(searchLower) &&
-            !p.roaster.toLowerCase().includes(searchLower) &&
-            !p.origin?.toLowerCase().includes(searchLower)) {
+        const matchesName = p.name.toLowerCase().includes(searchLower);
+        const matchesRoaster = p.roaster.toLowerCase().includes(searchLower);
+        const matchesOrigin = p.origin ? p.origin.toLowerCase().includes(searchLower) : false;
+        
+        if (!matchesName && !matchesRoaster && !matchesOrigin) {
           return false;
         }
       }

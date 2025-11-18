@@ -11,6 +11,7 @@ module.exports = {
       colors: {
         primary: '#FF6F00', // Burnt Orange
         'accent-gold': '#FFB300',
+        'gold-accent': '#FFB300', // Alias
         'text-primary': '#3E2723', // Rich Brown
         'text-secondary': '#6D4C41', // Lighter Brown
         'background-light': '#FFF8E1', // Cream
@@ -19,6 +20,12 @@ module.exports = {
         'surface-dark': '#2a221f', // Card background dark
         'border-light': '#EFEBE9',
         'border-dark': '#4a3c35',
+        // Additional colors from globals.css
+        'rich-brown': '#3E2723',
+        'cream': '#FFF8E1',
+        'subtle-gray': '#f5f2f0',
+        'text-muted-light': '#6d5b59',
+        'text-muted-dark': '#a19082',
       },
       fontFamily: {
         display: ['Playfair Display', 'serif'],
